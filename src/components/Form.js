@@ -34,14 +34,13 @@ const Form = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
     setFormSubmitted(true);
     reset();
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {formSubmitted && <h3>Form Submitted Successfully </h3>}
+      {formSubmitted ? <p>Form Submitted Successfully </p> : null}
       <div>
         {" "}
         {errors.name && <p> {errors.name.message} </p>}
