@@ -11,7 +11,7 @@ const schema = yup.object().shape({
     .required("Please enter your password")
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+      "Must Contain at least 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
     ),
   confirmpwd: yup
     .string()

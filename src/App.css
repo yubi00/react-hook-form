@@ -21,8 +21,11 @@ form {
   border-radius: 2em;
 }
 
+form * {
+  width: 100%;
+}
+
 input {
-  width: 300px;
   padding: 1em;
   border: none;
   outline: none;
@@ -53,9 +56,11 @@ button {
 }
 
 h3 {
-  background-color: rgb(24, 104, 30);
-  color: rgb(4, 43, 4);
+  background-color: #77dd77;
+  color: #4f7942;
   padding: 1em;
+  font-size: 1em;
+  line-height: 1.6;
 }
 
 .errors {
