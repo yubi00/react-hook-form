@@ -41,7 +41,7 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {formSubmitted && <p>Form Submitted Successfully </p>}
+      {formSubmitted && <h3>Form Submitted Successfully </h3>}
       <div>
         {" "}
         {errors.name && <p> {errors.name.message} </p>}
