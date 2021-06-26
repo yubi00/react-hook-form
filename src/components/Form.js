@@ -46,6 +46,7 @@ const Form = () => {
         {" "}
         {errors.name && <p> {errors.name.message} </p>}
         <input
+          className={errors.name && "errors"}
           {...register("name")}
           type='text'
           name='name'
@@ -56,6 +57,7 @@ const Form = () => {
         {" "}
         {errors.email && <p> {errors.email.message} </p>}
         <input
+          className={errors.email && "errors"}
           {...register("email")}
           type='text'
           name='email'
@@ -66,6 +68,7 @@ const Form = () => {
         {" "}
         {errors.password && <p> {errors.password.message} </p>}
         <input
+          className={errors.password && "errors"}
           {...register("password")}
           type='password'
           name='password'
@@ -76,6 +79,7 @@ const Form = () => {
         {" "}
         {errors.confirmpwd && <p> {errors.confirmpwd.message} </p>}
         <input
+          className={errors.confirmpwd && "errors"}
           {...register("confirmpwd")}
           type='password'
           name='confirmpwd'

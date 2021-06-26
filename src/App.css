@@ -57,3 +57,9 @@ h3 {
   color: rgb(4, 43, 4);
   padding: 1em;
 }
+
+.errors {
+  border: none;
+  outline: 1px solid rgba(255, 0, 0, 0.7);
+  box-shadow: none;
+}
