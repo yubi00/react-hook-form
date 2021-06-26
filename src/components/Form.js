@@ -33,14 +33,17 @@ const Form = () => {
     resolver: yupResolver(schema)
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     setFormSubmitted(true);
     reset();
+    setTimeout(() => {
+      setFormSubmitted(false);
+    }, 3000);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {formSubmitted ? <p>Form Submitted Successfully </p> : null}
+      {formSubmitted ? <h3>Form Submitted Successfully </h3> : null}
       <div>
         {" "}
         {errors.name && <p> {errors.name.message} </p>}
