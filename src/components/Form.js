@@ -1,19 +1,86 @@
-import React from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  name: yup.string().required("Please enter your name!"),
+  email: yup.string().email().required("Please enter your email!"),
+  password: yup
+    .string()
+    .required("Please enter your password")
+    .matches(
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+    ),
+  confirmpwd: yup
+    .string()
+    .required("Please confirm your password")
+    .test("confirm-pwd", "Passwords must match", function (value) {
+      return this.parent.password === value;
+    })
+});
 
 const Form = () => {
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(schema)
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    setFormSubmitted(true);
+    reset();
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {formSubmitted && <p>Form Submitted Successfully </p>}
       <div>
-        <input type='text' placeholder='name' />{" "}
+        {" "}
+        {errors.name && <p> {errors.name.message} </p>}
+        <input
+          {...register("name")}
+          type='text'
+          name='name'
+          placeholder='name'
+        />{" "}
       </div>
       <div>
-        <input type='text' placeholder='email' />{" "}
+        {" "}
+        {errors.email && <p> {errors.email.message} </p>}
+        <input
+          {...register("email")}
+          type='text'
+          name='email'
+          placeholder='email'
+        />{" "}
       </div>
       <div>
-        <input type='password' placeholder='password' />
+        {" "}
+        {errors.password && <p> {errors.password.message} </p>}
+        <input
+          {...register("password")}
+          type='password'
+          name='password'
+          placeholder='password'
+        />
       </div>
       <div>
-        <input type='password' placeholder='confirm password' />
+        {" "}
+        {errors.confirmpwd && <p> {errors.confirmpwd.message} </p>}
+        <input
+          {...register("confirmpwd")}
+          type='password'
+          name='confirmpwd'
+          placeholder='confirm password'
+        />
       </div>
       <button>Submit</button>
     </form>
