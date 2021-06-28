@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
 
 .App {
   display: flex;
@@ -72,5 +75,5 @@ h3 {
 h1 {
   color: rgba(0, 0, 0, 0.75);
   font-size: 3rem;
-  font-weight: bold;
+  font-weight: 900;
 }
